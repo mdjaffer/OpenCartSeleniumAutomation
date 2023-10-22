@@ -1,7 +1,5 @@
 package testCases;
 
-import java.time.Duration;
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -10,14 +8,17 @@ import pageObjects.HomePage;
 import pageObjects.RegisterAccountPage;
 import testBase.BaseTestCase;
 
-public class TC_001_AccountRegistrationTest extends BaseTestCase{
+public class TC_001_AccountRegistrationTest extends BaseTestCase {
     
     @Test
-    public void test_Account_Regidtration(){
+    public void test_Account_Regidtration() throws InterruptedException {
 
-        String email = randomEmails();
-        String passwd = "P@55w0rd";
+        String email = rb.getString("email"); //randomEmails();
+        String passwd = rb.getString("password"); //P@55w0rd";
 
+        logger.debug("application logs......");
+		logger.info("***  Starting TC_001_AccountRegistrationTest ***");
+        
         try{
             HomePage homePage = new HomePage(webDriver);
             homePage.clickMyAccount();
@@ -27,13 +28,14 @@ public class TC_001_AccountRegistrationTest extends BaseTestCase{
             registerAccountPage.setFirstName(randomString());
             registerAccountPage.setLastName(randomString());
             registerAccountPage.setEmail(email);
+            logger.info("___________Email Set_______________");
             //registerAccountPage.setTelephone(randomNumber());
             registerAccountPage.setPassword(passwd);
             registerAccountPage.setPrivacyPolicy();
             registerAccountPage.clickContinue();
-
+            logger.info("___________click Continue_______________");
             registerAccountPage.clickLoginPageLink();
-
+            logger.info("___________click LoginPage_______________");
             AccountLoginPage accountLoginPage = new AccountLoginPage(webDriver);
             accountLoginPage.setLoginEmail(email);            
             accountLoginPage.setLoginPassword(passwd);

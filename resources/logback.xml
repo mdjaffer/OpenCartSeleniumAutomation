@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="false">
+
+    <!-- Define the appenders -->
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>./logs/logfile.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!-- Disable time-based rollover -->
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>1MB</maxFileSize> <!-- Specify the maximum file size (1 MB) -->
+            </timeBasedFileNamingAndTriggeringPolicy>
+            <!-- Set the log file pattern with date and time placeholders -->
+            <fileNamePattern>./logs/logfile-%d{yyyy-MM-dd_HH-mm}.%i.log</fileNamePattern>
+            <maxFileSize>1MB</maxFileSize> <!-- Specify the maximum file size (1 MB) -->
+            <totalSizeCap>50MB</totalSizeCap> <!-- Specify the maximum total size of log files to retain (e.g., 50 MB) -->
+        </rollingPolicy>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%-5level] %logger{35} - %message%n</Pattern>
+        </encoder>
+    </appender>
+
+    <!-- Define the root logger -->
+    <root level="INFO">
+        <appender-ref ref="FILE" />
+    </root>
+</configuration>
