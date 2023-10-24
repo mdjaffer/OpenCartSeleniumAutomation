@@ -32,7 +32,7 @@ public class RegisterAccountPage extends BasePage{
     @FindBy(name = "agree")
 	WebElement chkdPolicy;
 
-    @FindBy(xpath = "//button[normalize-space()='Continue']")
+    @FindBy(xpath = "//input[@value='Continue']")
 	WebElement btnContinue;
 
     @FindBy(xpath = "//h1[normalize-space()='Your Account Has Been Created!']")
@@ -66,7 +66,7 @@ public class RegisterAccountPage extends BasePage{
     }
 
     public void setPrivacyPolicy() {  
-	    chkdPolicy.submit();
+	    chkdPolicy.click();
     }
 
     public void clickContinue() {

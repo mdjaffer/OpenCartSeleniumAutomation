@@ -29,11 +29,13 @@ public class TC_001_AccountRegistrationTest extends BaseTestCase {
             registerAccountPage.setLastName(randomString());
             registerAccountPage.setEmail(email);
             logger.info("___________Email Set_______________");
-            //registerAccountPage.setTelephone(randomNumber());
+            registerAccountPage.setTelephone(randomNumber());
             registerAccountPage.setPassword(passwd);
+            registerAccountPage.setConfirmPassword(passwd);
             registerAccountPage.setPrivacyPolicy();
-            registerAccountPage.clickContinue();
             logger.info("___________click Continue_______________");
+            registerAccountPage.clickContinue();
+            Thread.sleep(5000);
             registerAccountPage.clickLoginPageLink();
             logger.info("___________click LoginPage_______________");
             AccountLoginPage accountLoginPage = new AccountLoginPage(webDriver);
