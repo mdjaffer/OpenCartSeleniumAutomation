@@ -33,7 +33,7 @@ public class BaseTestCase {
 
         logger = LoggerFactory.getLogger(this.getClass());
 
-        rb = ResourceBundle.getBundle("config"); // Load config.properties file
+        rb = ResourceBundle.getBundle("ConfigData"); // Load ConfigData.properties file
         
         if(br.equals("chrome"))
 		{
